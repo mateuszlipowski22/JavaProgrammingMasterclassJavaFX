@@ -7,6 +7,7 @@ module fx.masterclass.helloworldfx {
 //    exports java.masterclass.helloworldfx
 
     opens fx.masterclass.helloworldfx;
+    opens fx.masterclass.layouts;
 
 
 }
