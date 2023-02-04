@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 
-
 <?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.HBox?>
-<HBox alignment="BOTTOM_RIGHT" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="fx.masterclass.layouts.LayoutsController"
-        style="-fx-border-color: red; -fx-border-width: 3; -fx-border-style: dashed" spacing="10">
-    <padding>
-        <Insets bottom="10" right="10"/>
-    </padding>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Label?>
+<BorderPane fx:controller="fx.masterclass.layouts.LayoutsController"
+            xmlns:fx="http://javafx.com/fxml" >
+    <top>
+        <Label text="this label is in the top position" alignment="CENTER"
+               BorderPane.alignment="CENTER"
+        style="-fx-border-style: dashed; -fx-border-color: blue; -fx-border-width: 3"/>
+    </top>
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <padding>
+                <Insets bottom="10" right="10"/>
+            </padding>
+            <Button text="Okay" prefWidth="90"/>
+            <Button text="Cancel" prefWidth="90"/>
+            <Button text="Help" prefWidth="90"/>
+        </HBox>
+    </bottom>
 
-    <Button text="Okay" prefWidth="90"/>
-    <Button text="Cancel" prefWidth="90"/>
-    <Button text="Help" prefWidth="90"/>
-
-</HBox>
+</BorderPane>
