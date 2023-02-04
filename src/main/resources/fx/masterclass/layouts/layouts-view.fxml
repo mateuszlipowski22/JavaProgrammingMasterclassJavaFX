@@ -2,18 +2,18 @@
 
 
 
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.control.Button?>
-<GridPane alignment="CENTER" hgap="10.0" vgap="10" xmlns:fx="http://javafx.com/fxml"
-          fx:controller="fx.masterclass.layouts.LayoutsController"
-          gridLinesVisible="true">
-<!--    <columnConstraints>-->
-<!--        <ColumnConstraints percentWidth="50.0"/>-->
-<!--        <ColumnConstraints percentWidth="50.0"/>-->
-<!--    </columnConstraints>-->
-    <Button text="Button One" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-    <Button text="Button Two" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-    <Button text="Button Three" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-    <Button text="Really Long Button Four more text more text" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-    <Button text="Button Five" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-</GridPane>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.HBox?>
+<HBox alignment="BOTTOM_RIGHT" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="fx.masterclass.layouts.LayoutsController"
+        style="-fx-border-color: red; -fx-border-width: 3; -fx-border-style: dashed" spacing="10">
+    <padding>
+        <Insets bottom="10" right="10"/>
+    </padding>
+
+    <Button text="Okay" prefWidth="90"/>
+    <Button text="Cancel" prefWidth="90"/>
+    <Button text="Help" prefWidth="90"/>
+
+</HBox>
