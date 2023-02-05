@@ -11,18 +11,18 @@
     <Button text="Click me" GridPane.rowIndex="0" GridPane.columnIndex="0">
         <graphic>
             <ImageView>
-<!--                <Image url="@/toolbarButtonGraphics/general/TipOfTheDay24.gif"/>-->
+                <!--                <Image url="@/toolbarButtonGraphics/general/TipOfTheDay24.gif"/>-->
             </ImageView>
         </graphic>
     </Button>
     <Label GridPane.rowIndex="0" GridPane.columnIndex="1" text="This is a label"
-    textFill="blue" WrapText="true">
+           textFill="blue" WrapText="true">
         <font>
             <Font name="Arial italic" size="12"/>
         </font>
         <graphic>
             <ImageView>
-<!--                <Image url="@/toolbarButtonGraphics/general/Information24.gif"/>-->
+                <!--                <Image url="@/toolbarButtonGraphics/general/Information24.gif"/>-->
             </ImageView>
         </graphic>
     </Label>
@@ -44,7 +44,7 @@
     </VBox>
 
     <HBox GridPane.rowIndex="0" GridPane.columnIndex="4">
-    <ToggleButton text="Toggle Me"/>
+        <ToggleButton text="Toggle Me"/>
         <ToggleButton text="Hello"/>
         <ToggleButton text="Bye"/>
     </HBox>
@@ -75,5 +75,9 @@
             </FXCollections>
         </items>
     </ChoiceBox>
-
+    <Slider GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.columnSpan="4"
+            min="0" max="100" showTickLabels="true" showTickMarks="true" minorTickCount="4" snapToTicks="true"/>
+    <Spinner GridPane.rowIndex="2" GridPane.columnIndex="4" GridPane.columnSpan="4" min="0" max="100" editable="true" initialValue="50"/>
+    <ColorPicker GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+    <DatePicker GridPane.rowIndex="3" GridPane.columnIndex="1"/>
 </GridPane>
