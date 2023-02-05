@@ -8,6 +8,7 @@ module fx.masterclass.helloworldfx {
 
     opens fx.masterclass.helloworldfx;
     opens fx.masterclass.layouts;
+    opens fx.masterclass.controls;
 
 
 }

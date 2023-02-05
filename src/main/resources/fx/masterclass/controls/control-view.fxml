@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<GridPane fx:controller="fx.masterclass.controls.ControlsController"
+          xmlns:fx="http://javafx.com/fxml" alignment="CENTER" hgap="10" vgap="10">
+    <Button text="Click me" GridPane.rowIndex="0" GridPane.columnIndex="0">
+        <graphic>
+            <ImageView>
+<!--                <Image url="@/toolbarButtonGraphics/general/TipOfTheDay24.gif"/>-->
+            </ImageView>
+        </graphic>
+    </Button>
+    <Label GridPane.rowIndex="0" GridPane.columnIndex="1" text="thus is a label">
+        <graphic>
+            <ImageView>
+<!--                <Image url="@/toolbarButtonGraphics/general/Information24.gif"/>-->
+            </ImageView>
+        </graphic>
+    </Label>
+</GridPane>
