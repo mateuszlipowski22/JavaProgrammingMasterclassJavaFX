@@ -10,5 +10,7 @@ module fx.masterclass.helloworldfx {
     opens fx.masterclass.layouts;
     opens fx.masterclass.controls;
     opens fx.masterclass.events;
+    opens fx.masterclass.cssJavaFx;
+
 
 }
