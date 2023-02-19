@@ -12,6 +12,6 @@ module fx.masterclass.helloworldfx {
     opens fx.masterclass.controls;
     opens fx.masterclass.events;
     opens fx.masterclass.cssJavaFx;
-
+    opens fx.masterclass.sceneBuildier;
 
 }
