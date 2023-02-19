@@ -1,6 +1,7 @@
 module fx.masterclass.helloworldfx {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
 
 
 //    opens java.masterclass.helloworldfx to javafx.fxml;
