@@ -14,5 +14,5 @@ module fx.masterclass.helloworldfx {
     opens fx.masterclass.cssJavaFx;
     opens fx.masterclass.sceneBuildier;
     opens fx.masterclass.myContacts;
-
+    opens fx.masterclass.myContacts.datamodel;
 }

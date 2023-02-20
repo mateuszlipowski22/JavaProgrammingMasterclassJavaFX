@@ -1,7 +1,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
-<BorderPane fx:controller="fx.masterclass.myContacts.Controller"
+<BorderPane fx:id="mainPanel" fx:controller="fx.masterclass.myContacts.Controller"
             xmlns:fx="http://javafx.com/fxml">
     <top>
         <MenuBar>
@@ -15,7 +15,7 @@
         </MenuBar>
     </top>
     <center>
-        <TableView fx:id="contactsTable">
+        <TableView fx:id="contactTable">
             <columns>
                 <TableColumn text="First Name">
                     <cellValueFactory>
