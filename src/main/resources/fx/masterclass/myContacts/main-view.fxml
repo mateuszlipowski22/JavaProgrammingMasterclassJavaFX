@@ -1,0 +1,8 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.StackPane?>
+<StackPane fx:controller="fx.masterclass.myContacts.Controller"
+           xmlns:fx="http://javafx.com/fxml">
+
+
+
+</StackPane>
