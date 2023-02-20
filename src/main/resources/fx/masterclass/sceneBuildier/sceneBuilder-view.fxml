@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane alignment="CENTER" vgap="10.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.masterclass.events.EventsController">
+<GridPane alignment="CENTER" vgap="10.0" xmlns:fx="http://javafx.com/fxml" fx:controller="fx.masterclass.sceneBuildier.SceneBuilderController">
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints />
@@ -17,10 +17,7 @@
    <children>
       <HBox spacing="5.0" GridPane.rowIndex="1">
          <children>
-            <Button mnemonicParsing="false" text="OK">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin></Button>
+            <Button mnemonicParsing="false" text="OK"/>
             <Button mnemonicParsing="false" text="Cancel" />
             <Button mnemonicParsing="false" text="OK" />
          </children>
