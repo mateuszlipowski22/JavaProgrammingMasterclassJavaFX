@@ -33,20 +33,8 @@ public class Controller {
     @FXML
     public void showAddContactDialog(){
         Dialog<ButtonType> dialog = new Dialog<>();
-        dialog.initOwner(mainPanel.getScene().getWindow());
-        dialog.setTitle("Add New Contact");
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("contactDialog.fxml"));
-        try{
-            dialog.getDialogPane().setContent(fxmlLoader.load());
-        }catch (IOException e){
-            System.out.println("Couldn't load the dialog");
-            e.printStackTrace();
-            return;
-        }
 
-        dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
-        dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+        FXMLLoader fxmlLoader = getFxmlLoader(dialog, "Add New Contact");
 
         Optional<ButtonType> result = dialog.showAndWait();
 
@@ -61,31 +49,11 @@ public class Controller {
 
     @FXML
     public void showEditContactDialog(){
-        Contact selectContact = contactTable.getSelectionModel().getSelectedItem();
-        if(selectContact==null){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("No Contact Selected");
-            alert.setHeaderText(null);
-            alert.setContentText("Please select the contact you want to edit.");
-            alert.showAndWait();
-            return;
-        }
+        Contact selectContact = getSelectedContact("Please select the contact you want to edit.");
 
         Dialog<ButtonType> dialog = new Dialog<>();
-        dialog.initOwner(mainPanel.getScene().getWindow());
-        dialog.setTitle("Edit Contact");
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("contactDialog.fxml"));
-        try{
-            dialog.getDialogPane().setContent(fxmlLoader.load());
-        }catch (IOException e){
-            System.out.println("Couldn't load the dialog");
-            e.printStackTrace();
-            return;
-        }
 
-        dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
-        dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+        FXMLLoader fxmlLoader = getFxmlLoader(dialog, "Edit Contact");
 
         ContactController contactController = fxmlLoader.getController();
         contactController.editContact(selectContact);
@@ -98,17 +66,28 @@ public class Controller {
         }
     }
 
+    private FXMLLoader getFxmlLoader(Dialog<ButtonType> dialog, String title) {
+        dialog.initOwner(mainPanel.getScene().getWindow());
+        dialog.setTitle(title);
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("contactDialog.fxml"));
+        try{
+            dialog.getDialogPane().setContent(fxmlLoader.load());
+        }catch (IOException e){
+            System.out.println("Couldn't load the dialog");
+            e.printStackTrace();
+            return null;
+        }
+
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+        return fxmlLoader;
+    }
+
+
     @FXML
     public void deleteContact(){
-        Contact selectContact = contactTable.getSelectionModel().getSelectedItem();
-        if(selectContact==null){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("No Contact Selected");
-            alert.setHeaderText(null);
-            alert.setContentText("Please select the contact you want to delete.");
-            alert.showAndWait();
-            return;
-        }
+        Contact selectContact = getSelectedContact("Please select the contact you want to delete.");
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Delete Contact");
@@ -121,5 +100,18 @@ public class Controller {
             data.deleteContact(selectContact);
             data.saveContacts();
         }
+    }
+
+    private Contact getSelectedContact(String alertContent) {
+        Contact selectContact = contactTable.getSelectionModel().getSelectedItem();
+        if(selectContact==null){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("No Contact Selected");
+            alert.setHeaderText(null);
+            alert.setContentText(alertContent);
+            alert.showAndWait();
+            return null;
+        }
+        return selectContact;
     }
 }
