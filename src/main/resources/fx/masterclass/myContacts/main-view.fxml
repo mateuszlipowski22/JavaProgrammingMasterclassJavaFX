@@ -10,6 +10,9 @@
                     <items>
                         <MenuItem text="Add..." onAction="#showAddContactDialog"/>
                     </items>
+                    <items>
+                        <MenuItem text="Edit..." onAction="#showEditContactDialog"/>
+                    </items>
                 </Menu>
             </menus>
         </MenuBar>
