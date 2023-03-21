@@ -2,6 +2,7 @@ module fx.masterclass.helloworldfx {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.desktop;
+    requires java.sql;
 
 
 //    opens java.masterclass.helloworldfx to javafx.fxml;
@@ -15,4 +16,6 @@ module fx.masterclass.helloworldfx {
     opens fx.masterclass.sceneBuildier;
     opens fx.masterclass.myContacts;
     opens fx.masterclass.myContacts.datamodel;
+    opens fx.masterclass.MusicUI;
+
 }
