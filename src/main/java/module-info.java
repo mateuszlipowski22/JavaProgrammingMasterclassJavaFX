@@ -17,5 +17,7 @@ module fx.masterclass.helloworldfx {
     opens fx.masterclass.myContacts;
     opens fx.masterclass.myContacts.datamodel;
     opens fx.masterclass.MusicUI;
+    opens fx.masterclass.MusicUI.model;
+
 
 }

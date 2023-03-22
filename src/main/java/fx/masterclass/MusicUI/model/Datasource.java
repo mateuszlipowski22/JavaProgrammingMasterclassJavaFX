@@ -104,6 +104,8 @@ public class Datasource {
         return instance;
     }
 
+    public static final String QUERY_ALBUM_BY_ARTIST_ID="SELECT * FROM " + TABLE_ALBUMS + " WHERE "+ COLUMN_ALBUM_ARTIST+" = ? ORDER BY "+ COLUMN_ALBUM_NAME +" COLLATE NOCASE";
+
     private Connection connection;
 
     private PreparedStatement querySongInfoView;
@@ -112,6 +114,8 @@ public class Datasource {
     private PreparedStatement insertIntoSongs;
     private PreparedStatement queryArtist;
     private PreparedStatement queryAlbum;
+    private PreparedStatement queryAlbumsByArtistId;
+
 
     public boolean open() {
         try {
@@ -122,6 +126,7 @@ public class Datasource {
             insertIntoSongs = connection.prepareStatement(INSERT_SONG);
             queryArtist = connection.prepareStatement(QUERY_ARTIST);
             queryAlbum = connection.prepareStatement(QUERY_ALBUM);
+            queryAlbumsByArtistId=connection.prepareStatement(QUERY_ALBUM_BY_ARTIST_ID);
 
             return true;
         } catch (SQLException e) {
@@ -153,6 +158,10 @@ public class Datasource {
                 queryArtist.close();
             }
             if (queryAlbum != null) {
+                queryAlbum.close();
+            }
+
+            if (queryAlbumsByArtistId != null) {
                 queryAlbum.close();
             }
 

@@ -16,13 +16,16 @@ public class Controller {
     public void listArtist(){
         Task<ObservableList<Artist>> task = new GetAllArtistsTask();
         artistTable.itemsProperty().bind(task.valueProperty());
+
+        new Thread(task).start();
     }
 
 }
 
 class GetAllArtistsTask extends Task{
     @Override
-    protected ObservableList<Artist> call() throws Exception {
-        return FXCollections.observableArrayList(Datasource.getInstance().queryArtists(Datasource.ORDER_BY_ASC));
+    public ObservableList<Artist> call() {
+        return FXCollections.observableArrayList
+                (Datasource.getInstance().queryArtists(Datasource.ORDER_BY_ASC));
     }
 }
