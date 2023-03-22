@@ -1,5 +1,6 @@
 package fx.masterclass.MusicUI;
 
+import fx.masterclass.MusicUI.model.Album;
 import fx.masterclass.MusicUI.model.Artist;
 import fx.masterclass.MusicUI.model.Datasource;
 import javafx.collections.FXCollections;
@@ -11,12 +12,33 @@ import javafx.scene.control.TableView;
 public class Controller {
 
     @FXML
-    private TableView<Artist> artistTable;
+    private TableView artistTable;
 
+    @FXML
     public void listArtist(){
         Task<ObservableList<Artist>> task = new GetAllArtistsTask();
         artistTable.itemsProperty().bind(task.valueProperty());
+        new Thread(task).start();
+    }
 
+    @FXML
+    public void listAlbumsForArtist(){
+        final Artist artist = (Artist) artistTable.getSelectionModel().getSelectedItem();
+
+        if(artist==null){
+            System.out.println("No artist selected");
+            return;
+        }
+
+        Task<ObservableList<Album>> task = new Task<ObservableList<Album>>() {
+            @Override
+            protected ObservableList<Album> call() throws Exception {
+                return FXCollections.observableArrayList(
+                        Datasource.getInstance().queryAlbumForArtistId(artist.getId())
+                );
+            }
+        };
+        artistTable.itemsProperty().bind(task.valueProperty());
         new Thread(task).start();
     }
 

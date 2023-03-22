@@ -104,7 +104,8 @@ public class Datasource {
         return instance;
     }
 
-    public static final String QUERY_ALBUM_BY_ARTIST_ID="SELECT * FROM " + TABLE_ALBUMS + " WHERE "+ COLUMN_ALBUM_ARTIST+" = ? ORDER BY "+ COLUMN_ALBUM_NAME +" COLLATE NOCASE";
+    public static final String QUERY_ALBUMS_BY_ARTIST_ID = "SELECT * FROM " + TABLE_ALBUMS +
+            " WHERE " + COLUMN_ALBUM_ARTIST + " = ? ORDER BY " + COLUMN_ALBUM_NAME + " COLLATE NOCASE";
 
     private Connection connection;
 
@@ -126,7 +127,7 @@ public class Datasource {
             insertIntoSongs = connection.prepareStatement(INSERT_SONG);
             queryArtist = connection.prepareStatement(QUERY_ARTIST);
             queryAlbum = connection.prepareStatement(QUERY_ALBUM);
-            queryAlbumsByArtistId=connection.prepareStatement(QUERY_ALBUM_BY_ARTIST_ID);
+            queryAlbumsByArtistId=connection.prepareStatement(QUERY_ALBUMS_BY_ARTIST_ID);
 
             return true;
         } catch (SQLException e) {
@@ -201,6 +202,27 @@ public class Datasource {
             }
             return artists;
 
+        } catch (SQLException e) {
+            System.out.println("Query failed: " + e.getMessage());
+            return null;
+        }
+    }
+
+    public List<Album> queryAlbumForArtistId(int id){
+        try{
+            queryAlbumsByArtistId.setInt(1, id);
+            ResultSet resultSet = queryAlbumsByArtistId.executeQuery();
+
+            List<Album> albums = new ArrayList<>();
+
+            while(resultSet.next()){
+                Album album = new Album();
+                album.setId(resultSet.getInt(1));
+                album.setName(resultSet.getString(2));
+                album.setArtistId(id);
+                albums.add(album);
+            }
+            return albums;
         } catch (SQLException e) {
             System.out.println("Query failed: " + e.getMessage());
             return null;
