@@ -195,6 +195,11 @@ public class Datasource {
 
             List<Artist> artists = new ArrayList<>();
             while (resultSet.next()) {
+                try {
+                    Thread.sleep(20);
+                }catch (InterruptedException e){
+                    System.out.println("Interrupted: " + e.getMessage());
+                }
                 Artist artist = new Artist();
                 artist.setId(resultSet.getInt(INDEX_ARTIST_ID));
                 artist.setName(resultSet.getString(INDEX_ARTIST_NAME));
