@@ -1,11 +1,9 @@
-module common.ui {
+module common {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.desktop;
     requires java.sql;
 
-    opens common;
-    opens db;
-    opens ui;
+    exports common;
 
 }
