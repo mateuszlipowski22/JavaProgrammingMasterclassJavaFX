@@ -4,7 +4,6 @@ module common.ui {
     requires java.desktop;
     requires java.sql;
 
-
     opens common;
     opens db;
     opens ui;
